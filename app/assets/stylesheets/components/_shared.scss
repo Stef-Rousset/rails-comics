@@ -1,0 +1,33 @@
+.main-container {
+  width: 90vw;
+  margin: 30px auto;
+  border-radius: 2px;
+  // background-color: $light-gray;
+  background-image: linear-gradient(to bottom right, $light-gray, #30719A)
+}
+
+.btn {
+  height: 40px;
+  font-size: 1rem;
+}
+h1 {
+  font-size: 30px;
+  text-shadow: 0 0 2px rgba(0,0,0,0.2);
+}
+/*responsive */
+
+// Small devices (landscape phones, 576px and up)
+@media (max-width: 767px) {
+  * {
+    box-sizing: border-box;
+  }
+  .main-container {
+    width:100vw;
+    margin: 30px 0px;
+  }
+  .btn {
+  height: 30px;
+  font-size: 0.75rem;
+  }
+}
+

@@ -1,0 +1,130 @@
+.index-container {
+  width: 90%;
+  margin: 5px auto;
+  .dernier {
+    font-size: 40px;
+    margin-bottom: 50px;
+    margin-top: 30px;
+    padding-top: 20px;
+    padding-left: 0px;
+  }
+  .lire {
+    font-size: 40px;
+    margin-bottom: 60px;
+    margin-top: 80px;
+    text-shadow: 0 0 2px rgba(0,0,0,0.2);
+  }
+}
+.title-bang {
+  display: flex;
+  justify-content: space-between;
+  .bang {
+    animation-name: bang;
+    animation-duration: 1000ms;
+    animation-delay: 2000ms;
+    animation-fill-mode: backwards;
+  }
+}
+@keyframes bang {
+  0% {
+    transform: scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(0.5);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+    opacity: 1;
+  }
+}
+.article-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 50px;
+  grid-row-gap: 45px;
+}
+.title-pow {
+  display:flex;
+  justify-content: start;
+  align-items: center;
+  .pow {
+    margin-left: 30px;
+  }
+  .shake {
+    animation-name: shake;
+    animation-duration: 100ms;
+    animation-delay: 100ms;
+    animation-iteration-count: 5;
+  }
+}
+$shaking: 3%;
+@keyframes shake {
+  25% {
+    transform: translateX($shaking);
+  }
+  75% {
+    transform: translateX($shaking);
+  }
+}
+/*responsive */
+
+// Small devices (landscape phones, 576px and up)
+@media (max-width: 767px) {
+  * {
+    box-sizing: border-box;
+  }
+  .banner h1 {
+    font-size: 45px;
+    padding: 40px 10px;
+  }
+  .title-bang {
+    justify-content: center;
+    .dernier {
+      font-size: 30px;
+      padding: 0;
+    }
+    .bang, script {
+    display: none;
+    }
+  }
+  .article-container {
+    grid-template-columns: 1fr;
+  }
+  .title-pow {
+    justify-content: center;
+    .lire {
+      font-size: 30px;
+      margin-bottom: 40px;
+      margin-top: 35px;
+    }
+    img {
+    display: none;
+    }
+  }
+}
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) and (max-width: 991px) {
+  * {
+    box-sizing: border-box;
+  }
+  .article-container {
+    grid-column-gap: 25px;
+  }
+  .banner h1 {
+    font-size: 45px;
+  }
+  .bang {
+    width: 150px;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) and (max-width: 1199px) {
+  * {
+    box-sizing: border-box;
+  }
+
+}
+

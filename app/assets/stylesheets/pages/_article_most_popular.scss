@@ -1,0 +1,71 @@
+h1 {
+  padding-left: 20px;
+  padding-top: 20px;
+  margin-bottom: 40px;
+}
+.popular-container {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  width: 100%;
+  margin: 20px auto;
+  position: relative;
+}
+.popular-container-details {
+  margin-left: 60px;
+  z-index: 2;
+}
+// .popular {
+//   width: 70%;
+// }
+.super-heros-img-two {
+  width: 40vw;
+  height: auto;
+  background-size: cover;
+  background-position: center;
+  position: sticky;
+  top: 0;
+  margin-right: 40px;
+  z-index: 1;
+}
+/*responsive */
+
+// Small devices (landscape phones, 576px and up)
+@media (max-width: 767px) {
+  * {
+    box-sizing: border-box;
+  }
+  h1 {
+    text-align: center;
+    padding-left: 0px;
+  }
+  .super-heros-img-two {
+    display: none;
+  }
+  .popular-container-details {
+    margin: 0px 10px;
+  }
+  .popular {
+    width: 100%;
+  }
+}
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) and (max-width: 991px) {
+  * {
+    box-sizing: border-box;
+  }
+  .popular {
+    width: 100%;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) and (max-width: 1199px) {
+  * {
+    box-sizing: border-box;
+  }
+  .popular {
+    width: 100%;
+  }
+}
+

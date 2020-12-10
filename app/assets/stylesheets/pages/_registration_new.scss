@@ -1,0 +1,14 @@
+/*responsive */
+
+// Small devices (landscape phones, 576px and up)
+@media (max-width: 767px) {
+  * {
+    box-sizing: border-box;
+  }
+  .registration-container {
+    width: 80% !important;
+  }
+  .registration-title img {
+    display: none;
+  }
+}

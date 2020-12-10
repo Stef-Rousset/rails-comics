@@ -1,0 +1,42 @@
+.new-container {
+  display:flex;
+  width: 100%;
+  align-items: center;
+  margin-top: 4%;
+}
+.new-container-details {
+  width: 60%;
+  margin: auto;
+  h1 {
+    padding-left: 0px;
+    padding-top: 30px;
+  }
+}
+.super-heros-img-one {
+  width: 30%;
+  height: auto;
+  background-size: cover;
+  background-position: center;
+}
+.img-transform {
+  transform: translateY(-100px) rotate(-5deg);
+  transition-property: transform;
+  transition-delay: 1000ms;
+  transition-duration: 1000ms;
+}
+/*responsive */
+
+// Small devices (landscape phones, 576px and up)
+@media (max-width: 767px) {
+  * {
+    box-sizing: border-box;
+  }
+  .super-heros-img-one, script {
+  display: none;
+  }
+  .new-container-details {
+    width: 85%;
+  }
+}
+
+

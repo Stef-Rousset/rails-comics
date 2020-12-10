@@ -1,0 +1,15 @@
+.banner {
+  background-size: cover;
+  background-position: top;
+  width: 100vw;
+  height: 50vh;
+  > h1 {
+    margin: 0;
+    padding-top: 10%;
+    text-align: center;
+    color: white;
+    font-size: 60px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,1);
+  }
+}
+
