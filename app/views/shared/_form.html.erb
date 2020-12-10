@@ -1,0 +1,8 @@
+<%= simple_form_for (@article) do |f| %>
+<%= f.input :title, :label => "Titre", input_html: { class: "title-input" } %>
+<%= f.input :content, :label => "Contenu", input_html: {rows: 8} %>
+<%= f.input :photo, as: :file %>
+<div class="form-action d-flex justify-content-center my-3">
+  <%= f.button :submit, "Valider l'article", class: "btn btn-secondary" %>
+</div>
+<% end %>

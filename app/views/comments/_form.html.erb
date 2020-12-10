@@ -1,0 +1,9 @@
+<div class="new-comment-container w-100 mx-auto my-3 p-2">
+  <h4 class='new-comment-title pl-0'>Ton commentaire sur l'article "<%= @article.title %>"</h4>
+  <%= simple_form_for ([@article, @comment]) do |f| %>
+  <%= f.input :content, :label => "Contenu :" , :input_html => {:rows => 5}%>
+  <div class="form-bouton", style="text-align: center">
+    <%= f.button :submit, "Valider le commentaire", class: "btn btn-secondary" %>
+  </div>
+  <% end %>
+</div>

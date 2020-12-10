@@ -1,0 +1,25 @@
+<% content_for :meta_title, "Le Blog des Comics: articles les plus populaires" %>
+<% content_for :meta_description, "Découvrez les 5 articles les plus lus sur notre blog" %>
+<% content_for :meta_image, cl_image_path("banner.jpg") %>
+
+<h1>Articles les plus lus</h1>
+<div class="popular-container">
+  <div class="popular-container-details">
+    <% @articles.each do |article| %>
+      <div class="article-card popular">
+        <% if article.photo.attached? %>
+        <%= cl_image_tag article.photo.key, alt: 'Comics'%>
+        <% else %>
+        <%= cl_image_tag "picture_kafear" , alt: 'Comics' %>
+        <% end %>
+        <div class="article-card-infos">
+          <h2><%= article.title %></h2>
+          <h3>By <%= article.user.pseudo.capitalize %></h3>
+          <p><%= article.content.first(100)%>...</p>
+          <%= link_to "Lire plus", article_path(article), class: "btn btn-secondary" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <%= image_tag "batwoman.png", alt: "batwoman", class: "super-heros-img-two" %>
+</div>

@@ -1,0 +1,12 @@
+<div class="new-container">
+  <%= image_tag "green.png", alt: "green-lantern", class: "super-heros-img-one" %>
+  <div class="new-container-details mb-4">
+    <h1>Nouvel Article</h1>
+    <%= render 'shared/form' %>
+  </div>
+</div>
+<script>
+  document.querySelector('.title-input').addEventListener('focus', function(){
+    document.querySelector('.super-heros-img-one').classList.add('img-transform');
+  });
+</script>

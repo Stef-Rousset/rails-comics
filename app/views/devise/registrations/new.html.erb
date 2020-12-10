@@ -1,25 +1,52 @@
-<h2>Sign up</h2>
+<div class="registration-container w-50 my-2 mx-auto py-2">
+  <div class="registration-title d-flex justify-content-between align-items-center">
+    <h2>S'inscrire</h2>
+    <%= cl_image_tag 'splash_s886yb', width: 100, alt: "noise" %>
+  </div>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
+      <%= f.input :first_name,
+                  required: true,
+                  autofocus: true,
+                  label: "Prénom",
+                  placeholder: "Paul",
+                  input_html: { autocomplete: "Prénom" }%>
+      <%= f.input :last_name,
+                  required: true,
+                  autofocus: true,
+                  label: "Nom",
+                  placeholder: "Dupond",
+                  input_html: { autocomplete: "Nom" }%>
+        <%= f.input :pseudo,
+                  required: true,
+                  autofocus: true,
+                  label: "Pseudo",
+                  placeholder: "Silver surfer",
+                  input_html: { autocomplete: "Pseudo" }%>
+      <%= f.input :email,
+                  required: true,
+                  autofocus: true,
+                  placeholder: "paul.dupond@gmail.com",
+                  input_html: { autocomplete: "email" }%>
+      <%= f.input :password,
+                  required: true,
+                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                  input_html: { autocomplete: "new-password" } %>
+      <%= f.input :password_confirmation,
+                  required: true,
+                  input_html: { autocomplete: "new-password" } %>
+      <%= f.input :photo,
+                  required: true,
+                  as: :file %>
+    </div>
+    <div class="form-actions d-flex justify-content-center my-3">
+      <%= f.button :submit, "Enregistrer l'inscription", class: "btn btn-secondary" %>
+    </div>
+  <% end %>
+  <br>
 
 <%= render "devise/shared/links" %>
+</div>

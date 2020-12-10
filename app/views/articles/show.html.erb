@@ -1,0 +1,62 @@
+<% content_for :meta_title, "Le Blog des Comics: l'article complet" %>
+<% content_for :meta_description, "Découvrez l'intégralité de l'article, ainsi que les commentaires des bloggers" %>
+<% content_for :meta_image, cl_image_path("banner.jpg") %>
+
+<div class="article-details">
+  <div class="article-details-img">
+    <% if @article.photo.attached? %>
+      <%= cl_image_tag @article.photo.key, alt: 'Comics'%>
+    <% else %>
+      <%= cl_image_tag "picture_kafear" , alt: 'Comics' %>
+    <% end %>
+  </div>
+  <div class="article-details-infos">
+    <div class="header">
+      <div class="header-details">
+        <h1><%= @article.title %></h1>
+        <% if @article.views == 1 %>
+          <p><%= @article.views %> vue</p>
+          <% else %>
+          <p><%= @article.views %> vues</p>
+          <% end %>
+      </div>
+      <h2>By <%= @article.user.pseudo.capitalize %></h2>
+    </div>
+
+    <p><%= @article.content %> </p>
+    <div class="links">
+      <%= link_to "Tous les articles", root_path, class: "btn btn-secondary" %>
+      <% if current_user == @article.user %>
+        <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, articles_path(@article), class: "btn btn-secondary" %>
+        <%= link_to '<i class="far fa-edit"></i>'.html_safe, edit_article_path(@article), class: "btn btn-secondary" %>
+      <% end %>
+      <% if user_signed_in? %>
+      <a href="#new-comment" class="btn btn-secondary new-form">Poster un commentaire</a>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="commentaires">
+  <div class="trait"></div>
+  <div class="comments">
+    <h3>Les commentaires (<%= @article.comments.size %>) </h3>
+    <% @article.comments.each do |comment| %>
+      <div class="comments-details">
+        <div class="comments-header">
+          <div class="comments-title">
+            <h4>De <%= comment.user.pseudo.capitalize %> </h4>
+            <p class="date"><%= comment.created_at.strftime("%d.%m.%y") %></p>
+          </div>
+          <div class="avatar-img">
+            <%= cl_image_tag comment.user.photo.key %>
+          </div>
+        </div>
+        <p><%= comment.content %> </p>
+      </div>
+    <% end %>
+  </div>
+  <div class="formulaire-new" style="display: none" id="new-comment">
+    <%= render 'comments/form' %>
+  </div>
+</div>
+

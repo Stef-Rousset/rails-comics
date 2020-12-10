@@ -1,0 +1,58 @@
+<% content_for :meta_title, "Le Blog des Comics" %>
+<% content_for :meta_description, "Bienvenue sur le blog des Comics, entièrement dédié aux Comics !!" %>
+<% content_for :meta_image, cl_image_path("banner.jpg") %>
+
+
+<div class="index-container">
+  <div class="title-bang">
+    <h2 class="dernier">Derniers articles</h2>
+    <%= cl_image_tag "bang_a3ecty", class: "bang", width: 200 %>
+  </div>
+  <div class="article-container">
+    <% @articles.first(2).each do |article| %>
+      <div class="article-card">
+        <% if article.photo.attached? %>
+        <%= cl_image_tag article.photo.key, alt: 'Comics'%>
+        <% else %>
+        <%= cl_image_tag "picture_kafear" , alt: 'Comics' %>
+        <% end %>
+        <div class="article-card-infos">
+          <h2><%= article.title %></h2>
+          <h3>By <%= article.user.pseudo.capitalize %></h3>
+          <p><%= article.content.first(100)%>...</p>
+          <%= link_to "Lire plus", article_path(article), class: "btn btn-outline-dark" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="title-pow">
+    <h2 class="lire">À lire également</h2>
+    <%= cl_image_tag "Sound_Effects_j8hhvy", class: "pow", width: 150 %>
+  </div>
+  <% if @articles.size > 3 %>
+    <div class="article-container">
+    <% @articles.last((@articles.size) - 2).each do |article| %>
+        <div class="article-card">
+          <% if article.photo.attached? %>
+            <%= cl_image_tag article.photo.key, alt: 'Comics'%>
+          <% else %>
+            <%= cl_image_tag "picture_kafear" , alt: 'Comics' %>
+          <% end %>
+          <div class="article-card-infos">
+            <h2><%= article.title %></h2>
+            <h3>By <%= article.user.pseudo.capitalize %></h3>
+            <p><%= article.content.first(100)%>...</p>
+            <%= link_to "Lire plus", article_path(article), class: "btn btn-outline-dark" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+<script>
+  window.addEventListener('scroll', function(e) {
+    if (window.pageYOffset >= 450) {
+      document.querySelector('.pow').classList.add('shake');
+    }
+  });
+</script>
