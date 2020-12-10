@@ -1,0 +1,5 @@
+meta_product_name: "Le Blog des comics"
+meta_title: "Le Blog des comics - dédié aux comics"
+meta_description: "Le blog des comics est entièrement dédié aux comics ! Vous pourrez y découvrir les dernières nouveautés,
+poster des articles et laisser vos commentaires sur les comics présentés.."
+meta_image: "banner.jpg" # should exist in `app/assets/images/`
