@@ -29,7 +29,7 @@
     <h2 class="lire">À lire également</h2>
     <%= cl_image_tag "Sound_Effects_j8hhvy", class: "pow", width: 150 %>
   </div>
-  <% if @articles.size > 3 %>
+  <% if @articles.size >= 3 %>
     <div class="article-container">
     <% @articles.last((@articles.size) - 2).each do |article| %>
         <div class="article-card">
