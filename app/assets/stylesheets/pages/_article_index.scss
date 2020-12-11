@@ -68,6 +68,10 @@ $shaking: 3%;
     transform: translateX($shaking);
   }
 }
+.back {
+  text-align: right;
+  padding-bottom: 30px;
+}
 /*responsive */
 
 // Small devices (landscape phones, 576px and up)
