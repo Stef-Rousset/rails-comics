@@ -14,10 +14,11 @@ h1 {
 .popular-container-details {
   margin-left: 60px;
   z-index: 2;
+  a {
+  text-decoration: none;
+  color: black;
+  }
 }
-// .popular {
-//   width: 70%;
-// }
 .super-heros-img-two {
   width: 40vw;
   height: auto;

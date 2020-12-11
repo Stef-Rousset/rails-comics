@@ -10,19 +10,20 @@
   </div>
   <div class="article-container">
     <% @articles.first(2).each do |article| %>
-      <div class="article-card">
-        <% if article.photo.attached? %>
-        <%= cl_image_tag article.photo.key, alt: 'Comics'%>
-        <% else %>
-        <%= cl_image_tag "picture_kafear" , alt: 'Comics' %>
-        <% end %>
-        <div class="article-card-infos">
-          <h2><%= article.title %></h2>
-          <h3>By <%= article.user.pseudo.capitalize %></h3>
-          <p><%= article.content.first(100)%>...</p>
-          <%= link_to "Lire plus", article_path(article), class: "btn btn-outline-dark" %>
+       <%= link_to article_path(article) do %>
+        <div class="article-card">
+          <% if article.photo.attached? %>
+          <%= cl_image_tag article.photo.key, alt: 'Comics'%>
+          <% else %>
+          <%= cl_image_tag "picture_kafear" , alt: 'Comics' %>
+          <% end %>
+          <div class="article-card-infos">
+            <h2><%= article.title %></h2>
+            <h3>By <%= article.user.pseudo.capitalize %></h3>
+            <p><%= article.content.first(150)%>...</p>
+           </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
   </div>
   <div class="title-pow">
@@ -31,20 +32,21 @@
   </div>
   <% if @articles.size >= 3 %>
     <div class="article-container">
-    <% @articles.last((@articles.size) - 2).each do |article| %>
-        <div class="article-card">
-          <% if article.photo.attached? %>
-            <%= cl_image_tag article.photo.key, alt: 'Comics'%>
-          <% else %>
-            <%= cl_image_tag "picture_kafear" , alt: 'Comics' %>
-          <% end %>
-          <div class="article-card-infos">
-            <h2><%= article.title %></h2>
-            <h3>By <%= article.user.pseudo.capitalize %></h3>
-            <p><%= article.content.first(100)%>...</p>
-            <%= link_to "Lire plus", article_path(article), class: "btn btn-outline-dark" %>
+      <% @articles.last((@articles.size) - 2).each do |article| %>
+        <%= link_to article_path(article) do %>
+          <div class="article-card">
+            <% if article.photo.attached? %>
+              <%= cl_image_tag article.photo.key, alt: 'Comics'%>
+            <% else %>
+              <%= cl_image_tag "picture_kafear" , alt: 'Comics' %>
+            <% end %>
+            <div class="article-card-infos">
+              <h2><%= article.title %></h2>
+              <h3>By <%= article.user.pseudo.capitalize %></h3>
+              <p><%= article.content.first(150)%>...</p>
+            </div>
           </div>
-        </div>
+        <% end %>
       <% end %>
     </div>
   <% end %>
