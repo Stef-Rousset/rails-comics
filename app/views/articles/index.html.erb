@@ -2,53 +2,84 @@
 <% content_for :meta_description, "Bienvenue sur le blog des Comics, entièrement dédié aux Comics !!" %>
 <% content_for :meta_image, cl_image_path("banner.jpg") %>
 
-
 <div class="index-container">
-  <div class="title-bang">
-    <h2 class="dernier">Derniers articles</h2>
-    <%= cl_image_tag "bang_a3ecty", class: "bang", width: 200 %>
-  </div>
-  <div class="article-container">
-    <% @articles.first(2).each do |article| %>
-       <%= link_to article_path(article) do %>
-        <div class="article-card">
-          <% if article.photo.attached? %>
-          <%= cl_image_tag article.photo.key, alt: 'Comics'%>
-          <% else %>
-          <%= cl_image_tag "picture_kafear" , alt: 'Comics' %>
+  <% if params[:query].present? %>
+    <div class="title-bang">
+      <h2 class="dernier">Les articles recherchés</h2>
+    </div>
+      <% if @articles.empty?  %>
+        <p> Aucun article ne correspond à ta recherche...</p>
+      <% else %>
+        <div class="article-container">
+          <% @articles.each do |article| %>
+             <%= link_to article_path(article) do %>
+              <div class="article-card">
+                <% if article.photo.attached? %>
+                <%= cl_image_tag article.photo.key, alt: 'Comics'%>
+                <% else %>
+                <%= cl_image_tag "picture_kafear" , alt: 'Comics' %>
+                <% end %>
+                <div class="article-card-infos">
+                  <h2><%= article.title %></h2>
+                  <h3>By <%= article.user.pseudo.capitalize %></h3>
+                  <p><%= article.content.first(150)%>...</p>
+                 </div>
+              </div>
+            <% end %>
           <% end %>
-          <div class="article-card-infos">
-            <h2><%= article.title %></h2>
-            <h3>By <%= article.user.pseudo.capitalize %></h3>
-            <p><%= article.content.first(150)%>...</p>
-           </div>
         </div>
-      <% end %>
-    <% end %>
-  </div>
-  <div class="title-pow">
-    <h2 class="lire">À lire également</h2>
-    <%= cl_image_tag "Sound_Effects_j8hhvy", class: "pow", width: 150 %>
-  </div>
-  <% if @articles.size >= 3 %>
+       <% end %>
+      <div class="back">
+        <%= link_to '<i class="fas fa-undo-alt"></i>'.html_safe, root_path, class: "btn btn-secondary" %>
+      </div>
+
+  <% else %>
+    <div class="title-bang">
+      <h2 class="dernier">Derniers articles</h2>
+      <%= cl_image_tag "bang_a3ecty", class: "bang", width: 200 %>
+    </div>
     <div class="article-container">
-      <% @articles.last((@articles.size) - 2).each do |article| %>
-        <%= link_to article_path(article) do %>
+      <% @articles.first(2).each do |article| %>
+         <%= link_to article_path(article) do %>
           <div class="article-card">
             <% if article.photo.attached? %>
-              <%= cl_image_tag article.photo.key, alt: 'Comics'%>
+            <%= cl_image_tag article.photo.key, alt: 'Comics'%>
             <% else %>
-              <%= cl_image_tag "picture_kafear" , alt: 'Comics' %>
+            <%= cl_image_tag "picture_kafear" , alt: 'Comics' %>
             <% end %>
             <div class="article-card-infos">
               <h2><%= article.title %></h2>
               <h3>By <%= article.user.pseudo.capitalize %></h3>
               <p><%= article.content.first(150)%>...</p>
-            </div>
+             </div>
           </div>
         <% end %>
       <% end %>
     </div>
+    <div class="title-pow">
+      <h2 class="lire">À lire également</h2>
+      <%= cl_image_tag "Sound_Effects_j8hhvy", class: "pow", width: 150 %>
+    </div>
+    <% if @articles.size >= 3 %>
+      <div class="article-container">
+        <% @articles.last((@articles.size) - 2).each do |article| %>
+          <%= link_to article_path(article) do %>
+            <div class="article-card">
+              <% if article.photo.attached? %>
+                <%= cl_image_tag article.photo.key, alt: 'Comics'%>
+              <% else %>
+                <%= cl_image_tag "picture_kafear" , alt: 'Comics' %>
+              <% end %>
+              <div class="article-card-infos">
+                <h2><%= article.title %></h2>
+                <h3>By <%= article.user.pseudo.capitalize %></h3>
+                <p><%= article.content.first(150)%>...</p>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
   <% end %>
 </div>
 <script>

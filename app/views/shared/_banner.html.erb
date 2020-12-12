@@ -1,3 +1,31 @@
 <div class="banner", style="background-image: url(<%= asset_path "banner.jpg"%>)">
   <h1>Bienvenue sur le Blog des Comics</h1>
+  <div class="search_bar">
+    <%= form_tag root_path, class: "search d-flex", method: :get do %>
+      <div class="barre">
+        <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Entrez un titre de comics, un nom de super-heros..."
+        %>
+      </div>
+      <%= button_tag(type: 'button', class: "btn btn-primary recherche") do %>
+        <i class="fas fa-search"></i>
+      <% end %>
+    <% end %>
+  </div>
 </div>
+<script>
+  const recherche = document.querySelector('.recherche');
+  const barre = document.querySelector('.barre');
+
+  function searchBarDisplay(event){
+   barre.classList.add('anim');
+    recherche.addEventListener('click', function(event){
+      event.currentTarget.setAttribute('type','submit');
+    });
+  };
+
+  recherche.addEventListener('click', searchBarDisplay);
+
+</script>
