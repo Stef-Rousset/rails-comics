@@ -6,10 +6,10 @@
         <%= text_field_tag :query,
         params[:query],
         class: "form-control",
-        placeholder: "Entrez un titre de comics ou un nom de super-heros"
+        placeholder: "Entrez un titre de comics, un nom de super-heros..."
         %>
       </div>
-      <%= button_tag(type: 'button', class: "btn btn-secondary recherche") do %>
+      <%= button_tag(type: 'button', class: "btn btn-primary recherche") do %>
         <i class="fas fa-search"></i>
       <% end %>
     <% end %>
@@ -19,14 +19,13 @@
   const recherche = document.querySelector('.recherche');
   const barre = document.querySelector('.barre');
 
-  function handleClick(event){
-    barre.style.display = 'block';
-    if (barre.style.display === 'block') {
-      recherche.addEventListener('click', function(event){
-        event.currentTarget.setAttribute('type','submit');
-      });
-    };
-  }
-  recherche.addEventListener('click', handleClick);
+  function searchBarDisplay(event){
+   barre.classList.add('anim');
+    recherche.addEventListener('click', function(event){
+      event.currentTarget.setAttribute('type','submit');
+    });
+  };
+
+  recherche.addEventListener('click', searchBarDisplay);
 
 </script>

@@ -26,7 +26,18 @@
     }
 }
 .barre {
-  width: 100%;
-  display: none;
+  width: 0%;
 }
-
+.anim {
+  animation-name: progress-width;
+  animation-duration: 1000ms;
+  animation-fill-mode: both;
+}
+@keyframes progress-width {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
