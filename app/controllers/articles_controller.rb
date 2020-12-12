@@ -12,7 +12,7 @@ class ArticlesController < ApplicationController
 
   def show
     @article.increment!(:views)
-    @comments = Comment.newest_first
+    @comments = Comment.last(5)
     @comment = Comment.new
     @comment.article = @article
   end
