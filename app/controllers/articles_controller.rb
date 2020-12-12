@@ -12,7 +12,7 @@ class ArticlesController < ApplicationController
 
   def show
     @article.increment!(:views)
-    @comments = Comment.all.order(created_at: :desc).last(5)
+    @comments = Comment.newest_first
     @comment = Comment.new
     @comment.article = @article
   end
