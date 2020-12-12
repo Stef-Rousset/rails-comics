@@ -7,27 +7,32 @@
     <div class="title-bang">
       <h2 class="dernier">Les articles recherchés</h2>
     </div>
-    <div class="article-container">
-      <% @articles.each do |article| %>
-         <%= link_to article_path(article) do %>
-          <div class="article-card">
-            <% if article.photo.attached? %>
-            <%= cl_image_tag article.photo.key, alt: 'Comics'%>
-            <% else %>
-            <%= cl_image_tag "picture_kafear" , alt: 'Comics' %>
+      <% if @articles.empty?  %>
+        <p> Aucun article ne correspond à ta recherche...</p>
+      <% else %>
+        <div class="article-container">
+          <% @articles.each do |article| %>
+             <%= link_to article_path(article) do %>
+              <div class="article-card">
+                <% if article.photo.attached? %>
+                <%= cl_image_tag article.photo.key, alt: 'Comics'%>
+                <% else %>
+                <%= cl_image_tag "picture_kafear" , alt: 'Comics' %>
+                <% end %>
+                <div class="article-card-infos">
+                  <h2><%= article.title %></h2>
+                  <h3>By <%= article.user.pseudo.capitalize %></h3>
+                  <p><%= article.content.first(150)%>...</p>
+                 </div>
+              </div>
             <% end %>
-            <div class="article-card-infos">
-              <h2><%= article.title %></h2>
-              <h3>By <%= article.user.pseudo.capitalize %></h3>
-              <p><%= article.content.first(150)%>...</p>
-             </div>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
-    <div class="back">
-      <%= link_to '<i class="fas fa-undo-alt"></i>'.html_safe, root_path, class: "btn btn-secondary" %>
-    </div>
+          <% end %>
+        </div>
+       <% end %>
+      <div class="back">
+        <%= link_to '<i class="fas fa-undo-alt"></i>'.html_safe, root_path, class: "btn btn-secondary" %>
+      </div>
+
   <% else %>
     <div class="title-bang">
       <h2 class="dernier">Derniers articles</h2>
