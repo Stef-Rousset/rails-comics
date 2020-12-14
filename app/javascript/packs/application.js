@@ -29,10 +29,17 @@ import "bootstrap";
 // import { initSelect2 } from '../components/init_select2';
 import { openCommentForm } from '../components/openCommentForm' ;
 import { closeCommentForm } from '../components/closeCommentForm' ;
+import { imageTransform } from '../components/imageTransform' ;
+import { powShake } from '../components/powShake' ;
+import { searchBarDisplay } from '../components/searchBarDisplay' ;
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   openCommentForm();
   closeCommentForm();
+  imageTransform();
+  powShake();
+  searchBarDisplay();
+
 });
