@@ -1,16 +1,19 @@
 const backToTop = () => {
-const button = document.querySelector('.top-button');
+const topButton = document.querySelector('.top-button');
+  function addButton(){
+    if (window.pageYOffset >= 400 && topButton) {  //pageYoffset renvoit le nb de px dont le document est scrollé
+      topButton.style.visibility = 'visible';
+      };
+    }
+  window.addEventListener('scroll', addButton);
 
-  if ((window.pageYOffset >= 400) && button){  //pageYoffset renvoit le nb de px dont le document est scrollé
-    button.style.visibility = 'visible';
-  }
-  if (button) {
-    button.addEventListener('click', function(){
-      window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-      });
-    })
-  }
+  if (topButton){
+    topButton.addEventListener('click', function(){
+          window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+          });
+    });
+  };
 }
 export { backToTop };
