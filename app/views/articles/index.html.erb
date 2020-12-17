@@ -80,12 +80,24 @@
         <% end %>
       </div>
     <% end %>
+    <div class="top-button">
+      <button class ='btn btn-secondary'><i class="fas fa-chevron-up"></i></button>
+    </div>
   <% end %>
 </div>
-<!-- <script>
-  window.addEventListener('scroll', function(e) {
-    if (window.pageYOffset >= 450) {
-      document.querySelector('.pow').classList.add('shake');
-    }
-  });
-</script> -->
+<script>
+  const button = document.querySelector('.top-button');
+
+  if ((window.pageYOffset >= window.innerHeight) && button){  //pageYoffset renvoit le nb de px dont le document est scrollé
+    button.classList.add('display-top-button');
+  }
+  if (button) {
+    button.addEventListener('click', function(){
+      window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+      });
+    })
+  }
+</script>
+
