@@ -32,6 +32,7 @@ import { closeCommentForm } from '../components/closeCommentForm' ;
 import { imageTransform } from '../components/imageTransform' ;
 import { powShake } from '../components/powShake' ;
 import { searchBarDisplay } from '../components/searchBarDisplay' ;
+import { backToTop } from '../components/backToTop' ;
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -41,5 +42,5 @@ document.addEventListener('turbolinks:load', () => {
   imageTransform();
   powShake();
   searchBarDisplay();
-
+  backToTop();
 });

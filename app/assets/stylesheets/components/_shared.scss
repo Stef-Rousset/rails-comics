@@ -30,4 +30,11 @@ h1 {
   font-size: 0.75rem;
   }
 }
+.top-button {
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 30px;
+  padding-right: 30px;
+  visibility: hidden;
+}
 
