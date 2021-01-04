@@ -6,8 +6,10 @@
         <%= text_field_tag :query,
         params[:query],
         class: "form-control",
+        autocomplete: "off",
         placeholder: "Entrez un titre de comics, un nom de super-heros..."
         %>
+        <!-- autocomplete off pr ne pas se voir propose les precedentes recherches -->
       </div>
       <%= button_tag(type: 'button', class: "btn btn-primary recherche") do %>
         <i class="fas fa-search"></i>
