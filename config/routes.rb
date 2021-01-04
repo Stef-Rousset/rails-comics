@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'articles#index'
+  get 'profil', to: 'pages#profil'
   resources :articles, except: :index do
     resources :comments, only: [:new, :create]
       collection do
