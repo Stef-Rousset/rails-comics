@@ -11,12 +11,19 @@
     </ul>
     <%= link_to '<i class="far fa-edit"></i>'.html_safe, edit_user_registration_path, class: 'edit-button' %>
   </div>
+  <div class="all-users">
+    <h2>Les membres du blog</h2>
+    <ul>
+     <%= render 'user' %>
+    </ul>
+  </div>
   <div class="follow">
     <div class="user-followers">
       <h2>Mes followers</h2>
     </div>
     <div class="user-followees">
       <h2>Mes followees</h2>
+
     </div>
   </div>
 </div>
