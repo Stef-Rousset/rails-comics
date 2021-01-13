@@ -3,8 +3,9 @@ class PagesController < ApplicationController
   before_action :set_user, only: [:follow, :unfollow]
 
   def profil
-    @user = current_user
     @users = User.where.not(id: current_user.id)
+    @followers = current_user.followers
+    @followees = current_user.following
   end
 
   def follow

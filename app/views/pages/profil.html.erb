@@ -2,28 +2,50 @@
 <div class="dashboard-informations">
   <div class="user-informations">
     <h2>Mes informations</h2>
-    <%= cl_image_tag @user.photo.key, class: 'avatar-profil' %>
+    <%= cl_image_tag current_user.photo.key, class: 'avatar-profil' %>
     <ul>
-      <li><span class="bold">Prénom :</span> <%= @user.first_name.capitalize %></li>
-      <li><span class="bold">Nom :</span> <%= @user.last_name.capitalize %></li>
-      <li><span class="bold">Pseudo :</span> <%= @user.pseudo.capitalize %></li>
-      <li><span class="bold">Email :</span> <%= @user.email %></li>
+      <li><span class="bold">Prénom :</span> <%= current_user.first_name.capitalize %></li>
+      <li><span class="bold">Nom :</span> <%= current_user.last_name.capitalize %></li>
+      <li><span class="bold">Pseudo :</span> <%= current_user.pseudo.capitalize %></li>
+      <li><span class="bold">Email :</span> <%= current_user.email %></li>
     </ul>
     <%= link_to '<i class="far fa-edit"></i>'.html_safe, edit_user_registration_path, class: 'edit-button' %>
   </div>
   <div class="all-users">
     <h2>Les membres du blog</h2>
     <ul>
-     <%= render 'user' %>
+      <% @users.each do |user| %>
+        <li data-user=<%= user.id %>>
+          <%= user.pseudo.capitalize %>,
+          <% if current_user.is_following?(user.id) %>
+            <%= link_to "Unfollow", unfollow_path(user.id), method: :post, remote: true%>
+          <% else %>
+            <%= link_to "Follow", follow_path(user.id), method: :post, remote: true%>
+          <% end %>
+        </li>
+      <% end %>
     </ul>
   </div>
   <div class="follow">
     <div class="user-followers">
       <h2>Mes followers</h2>
+      <ul>
+       <% @followers.each do |follower| %>
+        <li><%= follower.pseudo %>,
+            <%= link_to "Follow", follow_path(follower.id), method: :post, remote: true %>
+        </li>
+       <% end %>
+      </ul>
     </div>
     <div class="user-followees">
       <h2>Mes followees</h2>
-
+      <ul>
+       <% @followees.each do |followee| %>
+        <li><%= followee.pseudo %>,
+            <%= link_to "Unfollow", unfollow_path(followee.id), method: :post, remote: true %>
+        </li>
+       <% end %>
+      </ul>
     </div>
   </div>
 </div>
