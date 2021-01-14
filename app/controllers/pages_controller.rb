@@ -4,8 +4,6 @@ class PagesController < ApplicationController
 
   def profil
     @users = User.where.not(id: current_user.id)
-    @followers = current_user.followers
-    @followees = current_user.following
   end
 
   def follow
