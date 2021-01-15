@@ -1,0 +1,32 @@
+<h1>Dashboard</h1>
+<div class="dashboard-informations">
+  <div class="user-informations">
+    <h2>Mes informations</h2>
+    <%= cl_image_tag current_user.photo.key, class: 'avatar-profil' %>
+    <ul>
+      <li><span class="bold">Prénom :</span> <%= current_user.first_name.capitalize %></li>
+      <li><span class="bold">Nom :</span> <%= current_user.last_name.capitalize %></li>
+      <li><span class="bold">Pseudo :</span> <%= current_user.pseudo.capitalize %></li>
+      <li><span class="bold">Email :</span> <%= current_user.email %></li>
+      <li><span class="bold">Followers :</span> <%= current_user.followers.count %></li>
+    </ul>
+    <%= link_to '<i class="far fa-edit"></i>'.html_safe, edit_user_registration_path, class: 'edit-button' %>
+  </div>
+  <div class="bloggers">
+    <h2>Les blogueurs </h2>
+      <div class="bloggers-card">
+        <% @users.each do |user| %>
+          <%= render 'user.html.erb', user: user%>
+          <div class="bloggers-card-articles">
+            <h3>Most popular articles :</h3>
+            <% user.articles.popular.each do |article| %>
+              <%= link_to article_path(article) do %>
+                <%= article.title %>
+              <% end %>
+            <% end %>
+          </div>
+         <% end %>
+      </div>
+  </div>
+</div>
+
