@@ -39,6 +39,7 @@
         <% if !current_user.is_following?(@article.user.id) %>
           <%= link_to profil_path(current_user, anchor: "user-#{@article.user.id}"), class: "btn btn-secondary" do %>
            Follow <%= @article.user.pseudo.capitalize %>
+       <!--     ancre dans la partial user.html.erb -->
            <% end %>
         <% end %>
       <% end %>
