@@ -35,6 +35,13 @@
       <% else %>
         <%= link_to "Inscris-toi pour poster un commentaire", new_user_registration_path, class: "btn btn-secondary" %>
       <% end %>
+      <% if user_signed_in? && current_user != @article.user%>
+        <% if !current_user.is_following?(@article.user.id) %>
+          <%= link_to profil_path(current_user, anchor: "user-#{@article.user.id}"), class: "btn btn-secondary" do %>
+           Follow <%= @article.user.pseudo.capitalize %>
+           <% end %>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>

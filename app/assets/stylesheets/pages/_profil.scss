@@ -44,7 +44,6 @@
 }
 .bloggers-card {
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-  background-color: $light-gray;
 }
 .bloggers-card-name {
   display: flex;
@@ -52,6 +51,16 @@
   padding: 10px;
   h2 {
     font-size: 20px;
+  }
+}
+.bloggers-card-name > a {
+  color: #436161;
+  font-size: 20px;
+  font-family: Ranchers;
+  opacity: 1;
+  &:hover {
+    opacity: 0.7;
+    text-decoration: none;
   }
 }
 .bloggers-card-articles {
@@ -72,4 +81,9 @@
     text-decoration: none;
   }
 }
-
+.blue {
+  background-color: #c9d7e0;
+}
+.grey {
+  background-color: $light-gray;
+}

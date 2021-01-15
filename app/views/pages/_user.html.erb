@@ -1,28 +1,11 @@
-<!-- <li data-user=<%= user.id %>>
-  <%= user.pseudo.capitalize %>
-  <% if current_user.is_following?(user.id) %>
-    <%= link_to "Unfollow", unfollow_path(user.id), method: :post, remote: true %>
-  <% else %>
-    <%= link_to "Follow", follow_path(user.id), method: :post, remote: true %>
-  <% end %>
-</li>
-<% user.articles.last(3).each do |article| %>
-  <li><%= article.title %></li>
-<% end %> -->
 
-<div class="bloggers-card-name" data-user= <%= user.id %> >
-  <h2><%= user.pseudo.capitalize %><h2>
+<div id="user-<%= user.id %>" class="bloggers-card-name" data-user= <%= user.id %> >
+  <h2><%= user.pseudo.capitalize %></h2>
   <% if current_user.is_following?(user.id) %>
-     <%= link_to "Unfollow", unfollow_path(user.id), method: :post, remote: true %>
+     <%= link_to "Unfollow", unfollow_path(user.id), class: "follow-link", method: :post, remote: true %>
   <% else %>
-    <%= link_to "Follow", follow_path(user.id), method: :post, remote: true%>
+    <%= link_to "Follow", follow_path(user.id), class: "follow-link", method: :post, remote: true%>
   <% end %>
 </div>
-<div class="bloggers-card-articles">
-  <h3>Most popular articles :</h3>
-  <% user.articles.popular.each do |article| %>
-    <%= link_to article_path(article) do %>
-      <%= article.title %>
-    <% end %>
-  <% end %>
-</div>
+
+

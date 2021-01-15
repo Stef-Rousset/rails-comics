@@ -15,15 +15,8 @@
   <div class="bloggers">
     <h2>Les blogueurs </h2>
       <div class="bloggers-card">
-         <% @users.each do |user| %>
-          <div class="bloggers-card-name">
-            <h2><%= user.pseudo.capitalize %><h2>
-            <% if current_user.is_following?(user.id) %>
-               <%= link_to "Unfollow", unfollow_path(user.id), method: :post, remote: true %>
-            <% else %>
-              <%= link_to "Follow", follow_path(user.id), method: :post, remote: true%>
-            <% end %>
-          </div>
+        <% @users.each do |user| %>
+          <%= render 'user.html.erb', user: user%>
           <div class="bloggers-card-articles">
             <h3>Most popular articles :</h3>
             <% user.articles.popular.each do |article| %>

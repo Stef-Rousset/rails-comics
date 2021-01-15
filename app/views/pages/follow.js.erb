@@ -2,6 +2,20 @@
 function renderUser(userHTML) {
   const user = document.querySelector("[data-user='<%= @user.id %>']");
   user.outerHTML = userHTML;
+
+  const link = document.querySelector('.follow-link');
+  const cards = document.querySelectorAll('.bloggers-card');
+  cards.forEach(card => {
+    if (link.textContent === 'Follow') {
+      card.classList.remove('blue');
+      card.classList.add('grey');
+  }
+    else if (link.textContent === 'Unfollow') {
+      card.classList.remove('grey');
+      card.classList.add('blue');
+    }
+  })
 }
 
 renderUser('<%= j render "user.html.erb", user: @user %>');
+
