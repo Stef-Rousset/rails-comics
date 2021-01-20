@@ -4,8 +4,7 @@ function renderUser(userHTML) {
   user.outerHTML = userHTML;
 
   const link = document.querySelector('.follow-link');
-  const cards = document.querySelectorAll('.bloggers-card');
-  cards.forEach(card => {
+  const card = document.querySelector('.bloggers-card');
     if (link.textContent === 'Follow') {
       card.classList.remove('blue');
       card.classList.add('grey');
@@ -14,7 +13,6 @@ function renderUser(userHTML) {
       card.classList.remove('grey');
       card.classList.add('blue');
     }
-  })
 }
 
 renderUser('<%= j render "user.html.erb", user: @user %>');
