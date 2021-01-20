@@ -3,7 +3,7 @@ class PagesController < ApplicationController
   before_action :set_user, only: [:follow, :unfollow]
 
   def profil
-    @users = User.includes(:articles).where.not(id: current_user.id)
+    @users = User.where.not(id: current_user.id).includes(:articles)
   end
 
   def follow
