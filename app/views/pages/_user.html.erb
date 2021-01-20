@@ -1,11 +1,11 @@
-<div id="user-<%= user.id %>" class="bloggers-card grey" data-user= <%= user.id %>>
+<div id="user-<%= user.id %>" class="bloggers-card" data-user= <%= user.id  %> >
 <!-- l'id est pour l'ancre de la page show article, le data user pr selection ds follow.js.erb -->
   <div  class="bloggers-card-name"  >
     <h2><%= user.pseudo.capitalize %></h2>
     <% if current_user.is_following?(user.id) %>
-       <%= link_to "Unfollow", unfollow_path(user.id), class: "follow-link", method: :post, remote: true %>
+       <%= link_to "Unfollow", unfollow_path(user.id), class: "follow-link", data: { link: user.id }, method: :post, remote: true %>
     <% else %>
-      <%= link_to "Follow", follow_path(user.id), class: "follow-link", method: :post, remote: true%>
+      <%= link_to "Follow", follow_path(user.id), class: "follow-link", data: { link: user.id }, method: :post, remote: true%>
     <% end %>
   </div>
   <div class="bloggers-card-articles">
