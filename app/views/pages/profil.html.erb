@@ -14,8 +14,8 @@
   </div>
   <div class="bloggers">
     <h2>Les blogueurs </h2>
-      <div class="bloggers-card">
-        <% @users.each do |user| %>
+      <% @users.each do |user| %>
+        <div class="bloggers-card">
           <%= render 'user.html.erb', user: user%>
           <div class="bloggers-card-articles">
             <h3>Most popular articles :</h3>
@@ -25,8 +25,8 @@
               <% end %>
             <% end %>
           </div>
-         <% end %>
-      </div>
+        </div>
+      <% end %>
   </div>
 </div>
 
