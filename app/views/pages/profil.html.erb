@@ -14,19 +14,9 @@
   </div>
   <div class="bloggers">
     <h2>Les blogueurs </h2>
-      <% @users.each do |user| %>
-        <div class="bloggers-card grey">
-          <%= render 'user.html.erb', user: user%>
-          <div class="bloggers-card-articles">
-            <h3>Most popular articles :</h3>
-            <% user.articles.popular.each do |article| %>
-              <%= link_to article_path(article) do %>
-                <%= article.title %>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
+    <% @users.each do |user| %>
+      <%= render 'user.html.erb', user: user%>
+    <% end %>
   </div>
 </div>
 
