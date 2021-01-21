@@ -10,7 +10,7 @@ class Api::V1::ArticlesController < Api::V1::BaseController
   end
 
   def update
-    if @article = Article.update(article_params)
+    if Article.update(article_params)
     render :show
     else
       render_error #cf method en private
