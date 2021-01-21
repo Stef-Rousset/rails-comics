@@ -15,4 +15,13 @@ class ArticlePolicy < ApplicationPolicy
     record.user == user
   end
 
+  # tt user qui est logged in peut creer un article
+  def create?
+    !user.nil?
+  end
+
+  # seulement celui qui a ecrit l'article peut le supprimer
+  def destroy?
+    record.user == user
+  end
 end
