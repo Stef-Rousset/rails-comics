@@ -21,6 +21,8 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :encrypted_password, presence: true, uniqueness: true
 
+  acts_as_token_authenticatable
+
   def follow(user_id)
     following_relationships.create(following_id: user_id)
   end
