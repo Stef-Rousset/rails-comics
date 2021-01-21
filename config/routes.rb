@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   end
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      resources :articles, only: [ :index, :show ]
+      resources :articles, only: [ :index, :show, :udpate, :create, :destroy ]
     end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
